@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# 日志文件
+*.log
+logs/
+
+# 配置文件（包含敏感信息）
+# 注意：config.yaml 包含在仓库中作为示例，但应该在实际部署时修改
+# config.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.bak
+
+# 测试文件
+test_local.py
+app_with_confirm.py

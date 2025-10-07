@@ -1,0 +1,62 @@
+# 文档更新通知服务配置文件
+
+# ==================== 全局配置 ====================
+
+# 防刷机制
+enable_rate_limit: true    # 是否启用防刷机制
+rate_limit_seconds: 60     # 同一IP同一文档的通知间隔（秒）
+
+# 中文检测（推荐开启）
+chinese_only: true         # 只允许包含中文的路径，自动过滤所有扫描器
+
+# ==================== Webhook 配置 ====================
+
+# 默认 webhook（当文档没有单独配置时使用）
+default_webhook: null
+# 示例：default_webhook: "https://your-webhook-url.com/notify"
+
+# ==================== 黑名单配置 ====================
+
+# 自定义路径黑名单（可选）
+blocked_paths:
+  - "sitemap.xml"
+  - "robots.txt"
+  - "admin"
+  - "login"
+  - "wp-admin"
+  - ".env"
+  - ".git"
+
+# ==================== 文档映射 ====================
+
+# 文档与 webhook 的映射关系
+# 格式: "文档名称": "webhook_url"
+webhooks:
+  # 示例配置（请替换为您的实际配置）
+  "产品需求文档": "https://your-webhook-url.com/notify"
+  "技术方案": "https://your-webhook-url.com/notify"
+  
+  # 企业微信机器人示例
+  # "项目进度表": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_KEY"
+  
+  # 钉钉机器人示例
+  # "会议纪要": "https://oapi.dingtalk.com/robot/send?access_token=YOUR_TOKEN"
+  
+  # 飞书机器人示例
+  # "周报": "https://open.feishu.cn/open-apis/bot/v2/hook/YOUR_HOOK"
+
+# ==================== 配置说明 ====================
+#
+# 1. 文档名称必须与链接路径完全一致
+# 2. 支持中文、英文、数字、符号
+# 3. 如果文档未配置，将使用 default_webhook
+# 4. 如果 default_webhook 也未配置，则不发送通知
+#
+# POST 数据格式：
+# {
+#   "doc_name": "文档名称",
+#   "access_time": "2025-10-07 14:30:00",
+#   "ip_address": "192.168.1.100"
+# }
+#
+# 更多配置说明请参考：docs/
